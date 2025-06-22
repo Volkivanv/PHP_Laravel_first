@@ -3,12 +3,21 @@
     <title>List of users</title>
 </head>
 <body>
-    <h2>List of Users</h2>
-    <table border="2">
-        @foreach($users as $user)
-            <tr><td>{{$user->first_name}}</td><td>{{$user->email}}</td></tr>
-        @endforeach
-    </table>
+    @php
+        $greenUser = 2;
+    @endphp
+<table border="3px">
+    @foreach ($userlist as $key=>$user)
+        @if ($key === $greenUser)
+            <tr><td>{{$key}}</td><td style="background-color: green">{{$user}}</td></tr>
+        @elseif($key === 4)
+            <tr><td>{{$key}}</td><td><b>{{$user}}</b></td></tr>
+        @else
+            <tr><td>{{$key}}</td><td>{{$user}}</td></tr>
+        @endif
+
+    @endforeach
+</table>
 
 </body>
 </html>

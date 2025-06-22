@@ -53,3 +53,20 @@ Route::get('/test_database', function () {
             $worker->save();
         }
 });
+
+Route::get('/main', function(){
+    return view('mainpage');
+});
+
+Route::get('/about', function(){
+    return view('about');
+});
+
+Route::get('/users_list', function(){
+    $users = ['Ivan', 'Petr', 'Nikolay', 'Fedor', 'Oleg'];
+    return view('users', ['userlist'=> $users]);
+});
+
+Route::get('/uppercase', function(){
+    return view('testdir');
+});
