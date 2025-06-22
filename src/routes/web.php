@@ -9,6 +9,7 @@ use App\Http\Controllers\SendFileController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TestRedirectController;
 use App\Http\Controllers\UserController;
+use App\Models\Worker;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -44,3 +45,11 @@ Route::get('/send_file', SendFileController::class );
 //Homework2
 Route::get('/userform', [FormProcessor::class, 'index']);
 Route::post('/store_form', [FormProcessor::class, 'store']);
+
+Route::get('/test_database', function () {
+        for ($i = 0; $i < 5; $i++) {
+            $worker = new Worker();
+            $worker->first_name = 'John' . $i;
+            $worker->save();
+        }
+});
