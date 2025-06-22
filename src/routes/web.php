@@ -12,9 +12,9 @@ use App\Http\Controllers\UserController;
 use App\Models\Worker;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/test', [TestController::class, 'test']);
 
@@ -69,4 +69,22 @@ Route::get('/users_list', function(){
 
 Route::get('/uppercase', function(){
     return view('testdir');
+});
+
+Route::get('/', function () {
+    $users = [
+        ['name'=>'Ivan', 'age'=> 19, 'position'=> 1, 'address' => 'City1, Street1, House1'],
+        ['name'=>'Fedor', 'age'=> 34, 'position'=> 2, 'address' => 'City2, Street2, House2'],
+        ['name'=>'Bob', 'age'=> 14, 'position'=> 3, 'address' => 'City3, Street3, House3'],
+];
+    return view('home', ['users' => $users]);
+});
+
+Route::get('/contacts', function () {
+    $contacts = [
+        ['address' => 'City1, Street1, House1', 'post_code' => 123134, 'email'=>'asdfa@asdf.sa', 'phone'=>'123412'],
+        ['address' => 'City2, Street2, House2', 'post_code' => 214254, 'email'=>'gw@asdf.sa', 'phone'=>'654743'],
+        ['address' => 'City3, Street3, House3', 'post_code' => 123134, 'email'=>'gfd.sa', 'phone'=>'2356346'],
+];
+    return view('contacts', ['contacts'=> $contacts]);
 });
