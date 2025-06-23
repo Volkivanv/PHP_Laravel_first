@@ -5,8 +5,10 @@ use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\FormProcessor;
 use App\Http\Controllers\LibraryUserController;
 use App\Http\Controllers\MyUserController;
+use App\Http\Controllers\RequestTestController;
 use App\Http\Controllers\SendFileController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\TestHeaderController;
 use App\Http\Controllers\TestRedirectController;
 use App\Http\Controllers\UserController;
 use App\Models\Worker;
@@ -88,3 +90,8 @@ Route::get('/contacts', function () {
 ];
     return view('contacts', ['contacts'=> $contacts]);
 });
+
+
+Route::post('/test_parameters', [RequestTestController::class, 'testRequest']);
+
+Route::get('/test_header', [TestHeaderController::class, 'getHeader']);
